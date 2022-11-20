@@ -24,4 +24,9 @@ fn main() {
         println!("New x in a different scope is {x}");
     }
     println!("New x is {x}");
+
+    // Shadowed vars can be a different type.
+    let spaces = "   ";
+    let spaces = spaces.len();
+    println!("Size of spaces is {spaces}");
 }
