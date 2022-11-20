@@ -6,6 +6,10 @@ fn main() {
     basic_loop();
     loop_with_return();
     loop_labels();
+    while_loop();
+    for_loop();
+    for_range();
+    for_rev_range();
 }
 
 fn branching(x: i32) {
@@ -63,4 +67,35 @@ fn loop_labels() {
     }
 
     println!("end count: {count}");
+}
+
+fn while_loop() {
+    let mut x = 0;
+    while x < 5 {
+        println!("while x < 5: {x}");
+        x += 1;
+    }
+}
+
+fn for_loop() {
+    let x: [i32; 4] = [1, 2, 3, 4];
+    for n in x {
+        println!("for n in x: {n}");
+    }
+}
+
+fn for_range() {
+    for n in 1..=5 {
+        println!("for 1..=5 inclusive: {n}");
+    }
+    for n in 1..5 {
+        println!("for 1..5 exclusive: {n}");
+    }
+}
+
+fn for_rev_range() {
+    for n in (1..=5).rev() {
+        println!("countdown: {n}");
+    }
+    println!("LUNCH");
 }
