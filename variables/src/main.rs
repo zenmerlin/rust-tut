@@ -29,4 +29,34 @@ fn main() {
     let spaces = "   ";
     let spaces = spaces.len();
     println!("Size of spaces is {spaces}");
+
+    // Data types
+    // Integer types (8, 16, 32, 64, 128, signed (i) or unsigned (u)):
+    let a: u8 = 8; // unsigned 8 bit int
+    let b: i32 = 32; // signed 32 bit int (default)
+    println!("a: {a}, b: {b}");
+
+    // Floating point f32 (single precision) or f64 (double precision)
+    let a: f32 = 6.7;
+    let b: f64 = 3.14;
+    println!("a: {a}, b: {b}");
+
+    // Math operations
+    let sum = 1 + 2;
+    let multiplication = 2 * 4;
+    let floor_division = 2 / 3; // results in zero
+    let float_division = 2.0 / 3.0;
+    println!("{sum}");
+    println!("{multiplication}");
+    println!("{floor_division}");
+    println!("{float_division}");
+
+    // Booleans
+    let a: bool = true;
+    println!("{a}");
+
+    // Characters (4 byte Unicode Scalar Values)
+    let a: char = 'h';
+    let b = '🐿';
+    println!("{a} and {b}");
 }
