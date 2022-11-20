@@ -59,4 +59,20 @@ fn main() {
     let a: char = 'h';
     let b = '🐿';
     println!("{a} and {b}");
+
+    // Compound data types
+    // Tuples
+    let tup: (i32, f32, char) = (42, 42.0, '🦀');
+    println!("{} {} {}", tup.0, tup.1, tup.2);
+
+    // Arrays (live on the stack, vs vectors that live on the heap)
+    // Most of the time you want to use a vector
+    let a: [i32; 3] = [1, 2, 3];
+    let b = [4, 5, 6];
+    for n in a {
+        println!("{n}");
+    }
+    for n in b {
+        println!("{n}");
+    }
 }
