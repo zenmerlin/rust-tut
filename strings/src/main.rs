@@ -3,6 +3,7 @@ fn main() {
     string_clone();
     move_vs_copy();
     return_values_and_scope();
+    borrowing();
 }
 
 fn create_string(s: &str) -> String {
@@ -51,4 +52,26 @@ fn gives_ownership() -> String {
 fn takes_and_gives_back(s: String) -> String {
     println!("s (takes_and_gives_back): {s}");
     return s
+}
+
+fn borrowing() {
+    // You can pass references to objects without transferring ownership.
+    // References are immutable by default.
+    let s = String::from("hiya");
+    let len = get_length(&s); // does not transfer ownership
+    println!("The length of {s} is {len}");
+
+    let mut ms = String::from("yo");
+    println!("{ms}");
+    change(&mut ms);
+    println!("{ms}");
+}
+
+fn get_length(s: &String) -> usize {
+    // Cannot modify s here.
+     s.len()
+}
+
+fn change(s: &mut String) {
+    s.push_str(", sup");
 }
