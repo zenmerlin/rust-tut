@@ -63,6 +63,7 @@ fn borrowing() {
 
     let mut ms = String::from("yo");
     println!("{ms}");
+    // Creates a mutable reference to ms. Can only have one of these at a time.
     change(&mut ms);
     println!("{ms}");
 }
