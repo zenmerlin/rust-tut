@@ -22,7 +22,7 @@ fn main() {
             eprintln!("debug: {:?} -> {:?}", record, fields);
         }
         let name = fields[0];
-        if let Ok(age) =fields[1].parse::<f32>() {
+        if let Ok(age) = fields[1].parse::<f32>() {
             println!("{}, {}", name, age);
         }
     }
