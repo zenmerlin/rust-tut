@@ -2,6 +2,7 @@ fn main() {
     println!("{}", create_string("Hello, world!"));
     string_clone();
     move_vs_copy();
+    return_values_and_scope();
 }
 
 fn create_string(s: &str) -> String {
@@ -33,4 +34,21 @@ fn takes_ownership(s: String) {
 
 fn makes_copy(x: i32) {
     println!("make_copy: {x}");
+}
+
+fn return_values_and_scope() {
+    let s1 = gives_ownership();
+    println!("s1: {s1}");
+
+    let s2 = takes_and_gives_back(s1);
+    println!("s2: {s2}");
+}
+
+fn gives_ownership() -> String {
+    return String::from("hello");
+}
+
+fn takes_and_gives_back(s: String) -> String {
+    println!("s (takes_and_gives_back): {s}");
+    return s
 }
