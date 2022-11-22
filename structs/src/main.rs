@@ -5,6 +5,14 @@ struct User {
     sign_in_count: u64,
 }
 
+struct Color(i32, i32, i32);
+struct Point(i32, i32, i32);
+
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
 fn main() {
 
     let user = build_user(
@@ -29,6 +37,24 @@ fn main() {
         ..user2
     };
     print_user(&user3);
+
+    // Tuple structs
+    let black = Color(0, 0, 0);
+    let origin = Point(0, 0, 0);
+
+    println!("black = {}, {}, {}", black.0, black.1, black.2);
+    println!("origin = {}, {}, {}", origin.0, origin.1, origin.2);
+
+    // Example program using the Rectangle struct.
+    let rect = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!(
+        "\nThe area of the rectangle is {} square pixels.",
+        area(&rect)
+    );
 }
 
 fn build_user(email: String, username: String) -> User {
@@ -43,4 +69,8 @@ fn build_user(email: String, username: String) -> User {
 fn print_user(user: &User) {
     println!("User: {}\nEmail: {}\nActive: {}\nSign-ins: {}\n", user.username,
         user.email, user.active, user.sign_in_count);
+}
+
+fn area(rect: &Rectangle) -> u32 {
+    rect.width * rect.height
 }
