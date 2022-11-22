@@ -14,6 +14,12 @@ struct Rectangle {
     height: u32,
 }
 
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+
 fn main() {
 
     let user = build_user(
@@ -57,6 +63,17 @@ fn main() {
     println!(
         "\nThe area of the rectangle is {} square pixels.",
         area(&rect)
+    );
+
+    // Using the area method on the Rectangle struct.
+    let rect2 = Rectangle {
+        width: 10,
+        height: 40,
+    };
+
+    println!(
+        "\nThe area of the rectangle is {} square pixels.",
+        rect2.area()
     );
 }
 
