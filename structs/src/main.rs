@@ -53,6 +53,7 @@ fn main() {
     };
 
     println!("\nrect is {:?}", rect);
+    println!("\npretty printed rect is {:#?}", rect);
     println!(
         "\nThe area of the rectangle is {} square pixels.",
         area(&rect)
