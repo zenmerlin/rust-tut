@@ -11,8 +11,24 @@ fn main() {
         String::from("someone@example.com"),
         String::from("someusername123"));
     
-    println!("User: {}\nEmail: {}\nActive: {}\nSign-ins: {}\n", user.username,
-        user.email, user.active, user.sign_in_count);
+    print_user(&user);
+
+    // Creating a new instance of User struct from an existing instance.
+    // Note that this moves the data from the first instance.
+    let user2 = User {
+        username: user.username,
+        email: String::from("another@example.com"),
+        active: user.active,
+        sign_in_count: user.sign_in_count,
+    };
+    print_user(&user2);
+
+    // Creating a new instance from an existing instance using the .. syntax.
+    let user3 = User {
+        email: String::from("yetanother@example.com"),
+        ..user2
+    };
+    print_user(&user3);
 }
 
 fn build_user(email: String, username: String) -> User {
@@ -22,4 +38,9 @@ fn build_user(email: String, username: String) -> User {
         active: true,
         sign_in_count: 1,
     }
+}
+
+fn print_user(user: &User) {
+    println!("User: {}\nEmail: {}\nActive: {}\nSign-ins: {}\n", user.username,
+        user.email, user.active, user.sign_in_count);
 }
