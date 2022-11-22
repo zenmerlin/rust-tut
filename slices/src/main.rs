@@ -4,7 +4,7 @@ fn main() {
     println!("second word of s is {}", second_word(&s));
 }
 
-fn first_word(s: &String) -> &str {
+fn first_word(s: &str) -> &str {
     let bytes = s.as_bytes();
 
     for (i, &item) in bytes.iter().enumerate() {
@@ -16,7 +16,7 @@ fn first_word(s: &String) -> &str {
     &s[..]
 }
 
-fn second_word(s: &String) -> &str {
+fn second_word(s: &str) -> &str {
     let bytes = s.as_bytes();
 
     let mut count = 0;
