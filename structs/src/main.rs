@@ -15,6 +15,10 @@ struct Rectangle {
 }
 
 impl Rectangle {
+    fn square(size: u32) -> Self {
+        Self { width: size, height: size }
+    }
+
     fn area(&self) -> u32 {
         self.width * self.height
     }
@@ -74,6 +78,14 @@ fn main() {
     println!(
         "\nThe area of the rectangle is {} square pixels.",
         rect2.area()
+    );
+
+    // Using the square method on the Rectangle struct.
+    let sq = Rectangle::square(3);
+    println!("\nsq is {:?}", sq);
+    print!(
+        "\nThe area of the square is {} square pixels.\n",
+        sq.area()
     );
 }
 
