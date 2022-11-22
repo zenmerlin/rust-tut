@@ -8,6 +8,7 @@ struct User {
 struct Color(i32, i32, i32);
 struct Point(i32, i32, i32);
 
+#[derive(Debug)]
 struct Rectangle {
     width: u32,
     height: u32,
@@ -51,6 +52,7 @@ fn main() {
         height: 50,
     };
 
+    println!("\nrect is {:?}", rect);
     println!(
         "\nThe area of the rectangle is {} square pixels.",
         area(&rect)
