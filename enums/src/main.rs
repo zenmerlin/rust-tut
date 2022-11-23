@@ -69,15 +69,25 @@ fn main() {
 
     // Matching other and _
     let dice_roll = 9;
+    
+    // catch all uses the dice roll
     match dice_roll {
         3 => println!("You rolled a 3"),
         7 => println!("You rolled a 7"),
         other => move_player(other),
     }
+
+    // catch all performs action but ignores value
     match dice_roll {
         3 => println!("You rolled a 3"),
         7 => println!("You rolled a 7"),
         _ => reroll(), // catch all but don't use the value
+    }
+
+    match dice_roll {
+        3 => println!("You rolled a 3"),
+        7 => println!("You rolled a 7"),
+        _ => (), // catch all do nothing
     }
     
 }
