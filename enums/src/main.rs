@@ -90,6 +90,11 @@ fn main() {
         _ => (), // catch all do nothing
     }
     
+    // if let
+    let config_max = Some(3u8);
+    if let Some(max) = config_max {
+        println!("Config max is {}", max);
+    }
 }
 
 fn value_in_cents(coin: Coin) -> u8 {
