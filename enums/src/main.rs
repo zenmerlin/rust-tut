@@ -15,4 +15,10 @@ impl Message {
 fn main() {
     let m = Message::Write(String::from("hello"));
     m.call();
+
+    // Option enums (null values)
+    let some_number = Some(5);
+    let some_char = Some('a');
+    let absent_number: Option<i32> = None;
+    println!("{:?} {:?} {:?}", some_number, some_char, absent_number);
 }
