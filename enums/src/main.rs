@@ -66,6 +66,20 @@ fn main() {
         Some(x) => println!("Some number: {}", x),
         None => println!("No number"),
     }
+
+    // Matching other and _
+    let dice_roll = 9;
+    match dice_roll {
+        3 => println!("You rolled a 3"),
+        7 => println!("You rolled a 7"),
+        other => move_player(other),
+    }
+    match dice_roll {
+        3 => println!("You rolled a 3"),
+        7 => println!("You rolled a 7"),
+        _ => reroll(), // catch all but don't use the value
+    }
+    
 }
 
 fn value_in_cents(coin: Coin) -> u8 {
@@ -88,4 +102,12 @@ fn plus_one(x: Option<i32>) -> Option<i32> {
         None => None,
         Some(i) => Some(i + 1),
     }
+}
+
+fn move_player(n: i32) {
+    println!("You move {} spaces", n);
+}
+
+fn reroll() {
+    println!("You reroll");
 }
