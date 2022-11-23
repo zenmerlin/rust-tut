@@ -21,4 +21,19 @@ fn main() {
     let some_char = Some('a');
     let absent_number: Option<i32> = None;
     println!("{:?} {:?} {:?}", some_number, some_char, absent_number);
+
+    match some_number {
+        Some(x) => println!("Some number: {}", x),
+        None => println!("No number"),
+    }
+
+    match some_char {
+        Some(x) => println!("Some char: {}", x),
+        None => println!("No char"),
+    }
+
+    match absent_number {
+        Some(x) => println!("Some number: {}", x),
+        None => println!("No number"),
+    }
 }
