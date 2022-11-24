@@ -72,4 +72,13 @@ fn main() {
     if let Some(n) = v.into_iter().reduce(|a, b| a + b) {
         println!("v reduced = {}", n);
     }
+
+    // Closures
+    let add = |a, b| { a + b };
+
+    let double = |n| { n * 2 };
+
+    if let Some(n) = (1..=10).collect::<Vec<i32>>().iter().map(double).reduce(add) {
+        println!("anonymous collection reduced: {}", n);
+    }
 }
