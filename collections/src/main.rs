@@ -67,4 +67,9 @@ fn main() {
         .filter(|n| n % 2 == 0)
         .collect();
     println!("updated vector: {:?}", v);
+
+    // Reduce
+    if let Some(n) = v.into_iter().reduce(|a, b| a + b) {
+        println!("v reduced = {}", n);
+    }
 }
