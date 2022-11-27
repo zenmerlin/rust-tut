@@ -1,3 +1,5 @@
+use std::thread;
+
 #[derive(Debug, PartialEq, Copy, Clone)]
 enum ShirtColor {
     Red,
@@ -33,6 +35,7 @@ impl Inventory {
 }
 
 fn main() {
+    // Store example
     let store = Inventory {
         shirts: vec![ShirtColor::Blue, ShirtColor::Red, ShirtColor::Blue],
     };
@@ -50,4 +53,14 @@ fn main() {
         "The user with preference {:?} gets {:?}",
         user_pref2, giveaway2
     );
+
+    // Unrelated: threads
+    let list = vec![1, 2, 3];
+    println!("Before defining closure: {:?}", list);
+
+    // "move" is needed to pass ownership of list to the closure since the 
+    // closure could potentially outlive list.
+    thread::spawn(move || println!("From thread: {:?}", list))
+        .join()
+        .unwrap();
 }
