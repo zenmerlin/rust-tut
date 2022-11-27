@@ -10,6 +10,12 @@ struct Inventory {
     shirts: Vec<ShirtColor>,
 }
 
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
 impl Inventory {
     fn giveaway(&self, user_preference: Option<ShirtColor>) -> ShirtColor {
         user_preference.unwrap_or_else(|| self.most_stocked()) // here is the closure
@@ -63,4 +69,14 @@ fn main() {
     thread::spawn(move || println!("From thread: {:?}", list))
         .join()
         .unwrap();
+
+    // sort_by_key example
+    let mut list = [
+        Rectangle { width: 10, height: 1 },
+        Rectangle { width: 3, height: 5 },
+        Rectangle { width: 7, height: 12 },
+    ];
+
+    list.sort_by_key(|r| r.width);
+    println!("{:#?}", list);
 }
