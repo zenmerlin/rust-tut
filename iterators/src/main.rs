@@ -20,7 +20,15 @@ fn iter_test_2() {
     assert_eq!(v1_iter.next(), None);
 }
 
+fn iter_consumable_test() {
+    let v1 = vec![1, 2, 3];
+    let v1_iter = v1.iter();
+    let total: i32 = v1_iter.sum();
+    assert_eq!(total, 6);
+}
+
 fn main() {
    iter_test_1(); 
    iter_test_2(); 
+   iter_consumable_test();
 }
