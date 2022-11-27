@@ -13,6 +13,7 @@ fn iter_test_2() {
     // Iterators need to be mutable because next() changes internal state
     let mut v1_iter = v1.iter();
 
+    // next() returns immutable references to values in the vector
     assert_eq!(v1_iter.next(), Some(&1));
     assert_eq!(v1_iter.next(), Some(&2));
     assert_eq!(v1_iter.next(), Some(&3));
