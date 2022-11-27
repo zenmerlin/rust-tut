@@ -27,6 +27,7 @@ fn run(config: Config) -> Result<(), Box<dyn Error>> {
 
     Ok(())
 }
+
 struct Config {
     query: String,
     file_path: String,
