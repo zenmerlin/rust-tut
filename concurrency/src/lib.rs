@@ -25,7 +25,7 @@ pub fn example_wait_for_thread() {
         }
     });
 
-    handle.join().unwrap();
+    handle.join().unwrap(); // blocks until thread finishes
 
     for i in 1..=5 {
         println!("hi number {} from main thread!", i);        
