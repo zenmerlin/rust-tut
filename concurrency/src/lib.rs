@@ -33,6 +33,19 @@ pub fn example_wait_for_thread() {
     }
 }
 
+pub fn example_move_thread() {
+    let v = vec![1, 2, 3];
+
+    // move forces closure to take ownership of v
+    let handle = thread::spawn(move || {
+        println!("Here's a vector: {:?}", v);
+    });
+
+    // v is moved into the thread, so we can't use it here
+
+    handle.join().unwrap();
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -45,5 +58,10 @@ mod tests {
     #[test]
     fn run_example_wait_for_thread() {
         example_wait_for_thread();
+    }
+
+    #[test]
+    fn run_example_move_thread() {
+        example_move_thread();
     }
 }
