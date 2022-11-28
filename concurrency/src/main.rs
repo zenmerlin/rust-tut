@@ -1,3 +1,3 @@
 fn main() {
-    println!("Hello, world!");
+    concurrency::example_thread_spawn();
 }

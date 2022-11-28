@@ -1,7 +1,7 @@
 use std::thread;
 use std::time::Duration;
 
-fn example_thread_spawn() {
+pub fn example_thread_spawn() {
     let handle = thread::spawn(|| {
         for i in 1..=10 {
             println!("hi number {} from the spawned thread!", i);
