@@ -1,6 +1,7 @@
 use std::thread;
 use std::time::Duration;
 use std::sync::mpsc;
+use std::sync::{Arc, Mutex};
 
 pub fn example_thread_spawn() {
     let handle = thread::spawn(|| {
@@ -98,6 +99,28 @@ pub fn multiple_threads() {
     }
 }
 
+pub fn example_threads_with_mutex() {
+    // Use Arc to share ownership of the mutex between threads
+    // Rc would not work because it does not implement Send
+    let counter = Arc::new(Mutex::new(0));
+    let mut handles = vec![];
+
+    for _ in 0..10 {
+        let counter = Arc::clone(&counter);
+        let handle = thread::spawn(move || {
+            let mut num = counter.lock().unwrap();
+            *num += 1;
+        });
+        handles.push(handle);
+    }
+
+    for handle in handles {
+        handle.join().unwrap(); // wait on threads to finish
+    }
+
+    println!("Result: {}", *counter.lock().unwrap());
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -125,5 +148,10 @@ mod tests {
     #[test]
     fn run_multiple_threads() {
         multiple_threads();
+    }
+
+    #[test]
+    fn run_example_threads_with_mutex() {
+        example_threads_with_mutex();
     }
 }
