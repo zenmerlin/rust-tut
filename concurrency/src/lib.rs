@@ -1,5 +1,6 @@
 use std::thread;
 use std::time::Duration;
+use std::sync::mpsc;
 
 pub fn example_thread_spawn() {
     let handle = thread::spawn(|| {
@@ -46,6 +47,20 @@ pub fn example_move_thread() {
     handle.join().unwrap();
 }
 
+pub fn example_channels() {
+    let (tx, rx) = mpsc::channel();
+
+    thread::spawn(move || {
+        for i in 1..=10 {
+            tx.send(i).unwrap();
+        }
+    });
+
+    for received in rx {
+        println!("Got: {}", received);
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -63,5 +78,10 @@ mod tests {
     #[test]
     fn run_example_move_thread() {
         example_move_thread();
+    }
+
+    #[test]
+    fn run_example_channels() {
+        example_channels();
     }
 }
